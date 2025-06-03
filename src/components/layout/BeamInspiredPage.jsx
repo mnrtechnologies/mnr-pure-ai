@@ -54,7 +54,7 @@ export default function BeamInspiredPage() {
               <Button
                 size="lg"
                 variant="outline"
-                className="text-black hover:border-blue-400 px-8 py-3 w-full sm:w-auto transform hover:scale-105 transition-transform duration-200"
+                className="text-white hover:border-blue-400 px-8 py-3 w-full sm:w-auto transform hover:scale-105 transition-transform duration-200"
               >
                 Learn More
               </Button>

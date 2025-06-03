@@ -24,7 +24,7 @@ export function Navbar() {
         <div className="flex items-center space-x-2">
           <img
             src="/logo.png"
-            alt="Showt Logo"
+            alt="Short Logo"
             width={50}
             height={30}
             className="h-auto"
@@ -68,7 +68,7 @@ export function Navbar() {
               <SheetHeader className="mb-2 text-left">
                 <SheetTitle className="text-2xl font-bold flex items-center">
                   <img
-                    src="/Short logo.png"
+                    src="/logo.png"
                     alt="Logo"
                     width={50}
                     height={25}
