@@ -14,7 +14,7 @@ import { Button } from "../ui/button";
 const navLinks = [
   { href: "#features", label: "Features" },
   { href: "#pricing", label: "Pricing" },
-  { href: "#docs", label: "Docs" },
+  { href: "#docs", label: "Demo" },
 ];
 
 export function Navbar() {
@@ -37,11 +37,11 @@ export function Navbar() {
         {/* Desktop Navigation Links */}
         <div className="hidden md:flex flex-1 justify-center items-center space-x-2 lg:space-x-4">
           {navLinks.map((link) => (
-                      <Button
+               <Button
               key={link.label}
               variant="ghost"
               asChild
-              className="text-gray-300 hover:text-white hover:bg-blue-700/50"
+              className="text-gray-300 hover:text-white hover:bg-blue-700"
             >
               <a href={link.href}>{link.label}</a>
             </Button>
@@ -63,7 +63,7 @@ export function Navbar() {
             </SheetTrigger>
             <SheetContent
               side="right"
-              className="bg-gray-900 border-gray-700 text-white custom-sheet-width"
+              className="bg-gray-900 border-gray-700 text-white w-[20rem] rounded-xl p-6 "
             >
               <SheetHeader className="mb-2 text-left">
                 <SheetTitle className="text-2xl font-bold flex items-center">
@@ -80,19 +80,19 @@ export function Navbar() {
                   </span>
                 </SheetTitle>
               </SheetHeader>
-              <div className="flex flex-col space-y-3">
+              <div className="flex flex-col space-y-3 ">
                 {navLinks.map((link) => (
                   <SheetClose key={link.label} asChild>
                     <a
                       href={link.href}
-                      className="text-gray-300 hover:text-blue-300 py-2 px-3 rounded-md text-lg hover:bg-gray-800 transition-colors"
+                      className="text-gray-300 hover:text-blue-300 py-2 px-1 rounded-md text-lg hover:bg-gray-800 transition-colors flex items-center justify-center"
                     >
                       {link.label}
                     </a>
                   </SheetClose>
                 ))}
                 <SheetClose asChild>
-                  <Button className="bg-blue-600 hover:bg-blue-700 text-white w-full mt-4 py-3 text-md">
+                  <Button className="bg-blue-600 hover:bg-blue-700 text-white w-full mt-4 py-3 text-md ">
                     Get Started
                   </Button>
                 </SheetClose>

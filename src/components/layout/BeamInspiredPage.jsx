@@ -1,145 +1,128 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "../ui/button";
+import { useNavigate } from "react-router-dom";
 import {
   Card,
-  CardContent,
   CardHeader,
   CardTitle,
+  CardContent,
   CardDescription,
 } from "../ui/card";
 import { ChevronRight, Zap, BarChart, Layers } from "lucide-react";
 import { Navbar } from "./Navbar";
+import {CalendlyPage} from "./calendly/calendly"
+function FeatureCard({ icon, title, description }) {
+  return (
+    <Card className="bg-gray-800/70 border border-gray-700/50 text-gray-100 
+      hover:border-blue-500/70 hover:shadow-lg hover:shadow-blue-600/30 
+      hover:-translate-y-1 transition-all transform duration-300 ease-in-out 
+      backdrop-blur-md">
+      
+      <CardHeader className="flex flex-col items-center gap-4">
+        <div className="flex items-center justify-center w-16 h-16 rounded-xl 
+          bg-blue-600/20 border border-blue-500/50">
+          {icon}
+        </div>
+        <CardTitle className="text-xl text-center">{title}</CardTitle>
+      </CardHeader>
+
+      <CardContent>
+        <CardDescription className="text-gray-400 text-center">
+          {description}
+        </CardDescription>
+      </CardContent>
+    </Card>
+  );
+}
+
+function CTA({ onBookNow }) {
+  return (
+    <section className="py-16 bg-gray-800/70 rounded-xl border border-gray-700/50 shadow-2xl backdrop-blur-md flex flex-col items-center gap-6">
+      <h2 className="text-3xl font-bold">Ready to Dive In?</h2>
+      <p className="text-gray-400 max-w-xl text-center px-4">
+        Join thousands of developers building the future. Get started today and experience the difference.
+      </p>
+      <Button
+        size="lg"
+        onClick={onBookNow}
+        className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 hover:scale-105"
+      >
+        Book Now
+      </Button>
+    </section>
+  );
+}
+
 
 
 export default function BeamInspiredPage() {
+ const navigate = useNavigate();
+
   return (
-    <div className="min-h-screen bg-gray-900 text-gray-100 flex flex-col items-center">
-      <Navbar/>
-
-      <main className="container mx-auto mt-20 sm:mt-24 px-4 text-center flex-grow">
-        <section
-          className="py-20 relative isolate"
-          style={{
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundAttachment: "fixed",
-          }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-b from-gray-900/90 via-gray-900/70 to-gray-900/90 backdrop-blur-sm z-[-1]"></div>
-
-          <div className="relative z-10">
-            <h1
-              className="text-5xl md:text-7xl font-bold mb-6 animate-fadeInUp"
-              style={{ animationDelay: "0.2s" }}
+    <div className="min-h-screen flex flex-col bg-gradient-to-b from-gray-900 via-gray-900/90 to-gray-900 text-gray-100">
+      <Navbar />
+      <main className="flex-grow container mx-auto px-4">
+        <section className="flex flex-col items-center text-center pt-24 pb-16 gap-8">
+          <h1 className="text-5xl md:text-7xl font-extrabold leading-tight">
+            Build Amazing Things <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
+              Faster Than Ever
+            </span>
+          </h1>
+          <p className="max-w-2xl text-lg md:text-xl text-gray-300">
+            MNR Technologies unwavering commitment to excellence, delivers
+            cutting edge software and AI solutions focused on innovation,
+            performance, and elegant user experiences.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <Button
+              size="lg"
+              className="flex items-center justify-center gap-2 bg-blue-600 text-white hover:bg-blue-700 px-6 py-3 rounded-md transition-colors"
             >
-              Build Amazing Things <br />
-              <span className="text-blue-400">Faster Than Ever</span>
-            </h1>
-            <p
-              className="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto animate-fadeInUp"
-              style={{ animationDelay: "0.4s" }}
+              Start Building
+              <ChevronRight className="h-5 w-5" />
+            </Button>
+
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-gray-600 hover:border-blue-400 text-white px-8 py-3"
             >
-              MNR Technologies unwavering commitment to excellence in delivering
-              cutting-edge software and AI solutions. Our focus on innovation,
-              performance, and elegant user experiences tailored for the future
-              of technology.
-            </p>
-            <div className="space-y-4 sm:space-y-0 sm:space-x-4 animate-fadeInUp">
-              <Button
-                size="lg"
-                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 w-full sm:w-auto transform hover:scale-105 transition-transform duration-200"
-              >
-                Start Building <ChevronRight className="ml-2 h-5 w-5" />
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="text-white hover:border-blue-400 px-8 py-3 w-full sm:w-auto transform hover:scale-105 transition-transform duration-200"
-              >
-                Learn More
-              </Button>
-            </div>
+              Learn More
+            </Button>
           </div>
         </section>
 
-        {/* Features Section (Simplified) */}
         <section className="py-20">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-10 text-center">
             Core Features
           </h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Feature Card 1 */}
-            <Card className="bg-gray-800/70 border-gray-700 text-gray-100 transition-all duration-300 hover:border-blue-500/70 hover:shadow-2xl hover:shadow-blue-500/10 hover:-translate-y-2 group backdrop-blur-sm">
-              <CardHeader>
-                <div className="flex items-center justify-center w-16 h-16 bg-blue-600/20 rounded-xl mb-6 border border-blue-500/50 group-hover:bg-blue-600/30 transition-colors duration-300">
-                  <Zap className="h-8 w-8 text-blue-400 group-hover:text-blue-300 transition-colors duration-300" />
-                </div>
-                <CardTitle className="text-xl">Lightning Fast</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-gray-400">
-                  Experience unparalleled speed and performance for your
-                  applications.
-                </CardDescription>
-              </CardContent>
-            </Card>
-
-            {/* Feature Card 2 */}
-            <Card className="bg-gray-800/70 border-gray-700 text-gray-100 transition-all duration-300 hover:border-blue-500/70 hover:shadow-2xl hover:shadow-purple-500/10 hover:-translate-y-2 group backdrop-blur-sm">
-              <CardHeader>
-                <div className="flex items-center justify-center w-16 h-16 bg-blue-600/20 rounded-xl mb-6 border border-blue-500/50 group-hover:bg-blue-600/30 transition-colors duration-300">
-                  <BarChart className="h-8 w-8 text-blue-400 group-hover:text-blue-300 transition-colors duration-300" />
-                </div>
-                <CardTitle className="text-xl">Insightful Analytics</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-gray-400">
-                  Gain deep insights into your data with our powerful analytics
-                  tools.
-                </CardDescription>
-              </CardContent>
-            </Card>
-
-            {/* Feature Card 3 */}
-            <Card className="bg-gray-800/70 border-gray-700 text-gray-100 transition-all duration-300 hover:border-blue-500/70 hover:shadow-2xl hover:shadow-blue-500/10 hover:-translate-y-2 group backdrop-blur-sm">
-              <CardHeader>
-                <div className="flex items-center justify-center w-16 h-16 bg-blue-600/20 rounded-xl mb-6 border border-blue-500/50 group-hover:bg-blue-600/30 transition-colors duration-300">
-                  <Layers className="h-8 w-8 text-blue-400 group-hover:text-blue-300 transition-colors duration-300" />
-                </div>
-                <CardTitle className="text-xl">
-                  Scalable Infrastructure
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-gray-400">
-                  Effortlessly scale your projects as your needs grow with our
-                  robust platform.
-                </CardDescription>
-              </CardContent>
-            </Card>
+          <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3">
+            <FeatureCard
+              icon={<Zap className="h-8 w-8 text-blue-400" />}
+              title="Lightning Fast"
+              description="Experience unparalleled speed and performance for your applications."
+            />
+            <FeatureCard
+              icon={<BarChart className="h-8 w-8 text-blue-400" />}
+              title="Insightful Analytics"
+              description="Gain deep insights into your data with our powerful analytics tools."
+            />
+            <FeatureCard
+              icon={<Layers className="h-8 w-8 text-blue-400" />}
+              title="Scalable Infrastructure"
+              description="Effortlessly scale your projects as your needs grow with our robust platform."
+            />
           </div>
         </section>
 
-        {/* Call to Action (Simplified) */}
-        <section className="py-16 sm:py-20 my-10 bg-gray-800/70 backdrop-blur-sm rounded-lg border border-gray-700/50 shadow-xl">
-          <h2 className="text-3xl font-bold mb-4">Ready to Dive In?</h2>
-          <p className="text-gray-400 mb-8 max-w-xl mx-auto px-4">
-            Join thousands of developers building the future. Get started today
-            and experience the difference.
-          </p>
-          <Button
-            size="lg"
-            className="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 transform hover:scale-105 transition-transform duration-200"
-          >
-            Sign Up Now
-          </Button>
-        </section>
+        <CTA onBookNow={() =>navigate("/book") } />
+
+        
       </main>
 
-      <footer className="w-full p-8 border-t border-gray-700/50 mt-16">
-        <div className="container mx-auto text-center text-gray-500">
-          <p>&copy; {new Date().getFullYear()} MNR-PURE-AI. All rights reserved.</p>
-        </div>
+      <footer className="border-t border-gray-700/50 py-8 text-center text-gray-500">
+        &copy; {new Date().getFullYear()} MNR‑PURE‑AI. All rights reserved.
       </footer>
     </div>
   );
