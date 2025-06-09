@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+// BeamInspiredPage.jsx
+import React, { useEffect, useRef } from "react"; // Import useEffect and useRef
 import { Button } from "../ui/button";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom"; // Import useLocation
 import {
   Card,
   CardHeader,
@@ -9,17 +10,18 @@ import {
   CardDescription,
 } from "../ui/card";
 import { ChevronRight, Zap, BarChart, Layers } from "lucide-react";
-import { Navbar } from "./Navbar";
-import {CalendlyPage} from "./calendly/calendly"
+import { Navbar } from "./Navbar"; 
+
+
 function FeatureCard({ icon, title, description }) {
   return (
-    <Card className="bg-gray-800/70 border border-gray-700/50 text-gray-100 
-      hover:border-blue-500/70 hover:shadow-lg hover:shadow-blue-600/30 
-      hover:-translate-y-1 transition-all transform duration-300 ease-in-out 
+    <Card className="bg-gray-800/70 border border-gray-700/50 text-gray-100
+      hover:border-blue-500/70 hover:shadow-lg hover:shadow-blue-600/30
+      hover:-translate-y-1 transition-all transform duration-300 ease-in-out
       backdrop-blur-md">
-      
+
       <CardHeader className="flex flex-col items-center gap-4">
-        <div className="flex items-center justify-center w-16 h-16 rounded-xl 
+        <div className="flex items-center justify-center w-16 h-16 rounded-xl
           bg-blue-600/20 border border-blue-500/50">
           {icon}
         </div>
@@ -35,9 +37,10 @@ function FeatureCard({ icon, title, description }) {
   );
 }
 
-function CTA({ onBookNow }) {
+
+function CTA({ onBookNow, bookNowRef }) {
   return (
-    <section className="py-16 bg-gray-800/70 rounded-xl border border-gray-700/50 shadow-2xl backdrop-blur-md flex flex-col items-center gap-6">
+    <section id="book-now-section" className="py-16 bg-gray-800/70 rounded-xl border border-gray-700/50 shadow-2xl backdrop-blur-md flex flex-col items-center gap-6">
       <h2 className="text-3xl font-bold">Ready to Dive In?</h2>
       <p className="text-gray-400 max-w-xl text-center px-4">
         Join thousands of developers building the future. Get started today and experience the difference.
@@ -45,6 +48,7 @@ function CTA({ onBookNow }) {
       <Button
         size="lg"
         onClick={onBookNow}
+        ref={bookNowRef} 
         className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 hover:scale-105"
       >
         Book Now
@@ -53,10 +57,34 @@ function CTA({ onBookNow }) {
   );
 }
 
-
-
 export default function BeamInspiredPage() {
- const navigate = useNavigate();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const bookNowButtonRef = useRef(null); 
+
+  useEffect(() => {
+  
+    if (location.state && location.state.scrollToId) {
+      const targetId = location.state.scrollToId;
+      const targetElement = document.getElementById(targetId);
+
+      if (targetElement) {
+      
+        targetElement.scrollIntoView({ behavior: "smooth", block: "center" });
+
+      
+        if (bookNowButtonRef.current) {
+          bookNowButtonRef.current.classList.add("highlight-animation");
+          setTimeout(() => {
+            bookNowButtonRef.current.classList.remove("highlight-animation");
+          }, 1500); 
+        }
+      }
+
+  
+      navigate(location.pathname, { replace: true, state: {} });
+    }
+  }, [location, navigate]); 
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-b from-gray-900 via-gray-900/90 to-gray-900 text-gray-100">
@@ -116,13 +144,13 @@ export default function BeamInspiredPage() {
           </div>
         </section>
 
-        <CTA onBookNow={() =>navigate("/book") } />
+        {/* Pass the ref to the CTA component */}
+        <CTA onBookNow={() => navigate("/book")} bookNowRef={bookNowButtonRef} />
 
-        
       </main>
 
       <footer className="border-t border-gray-700/50 py-8 text-center text-gray-500">
-        &copy; {new Date().getFullYear()} MNR‑PURE‑AI. All rights reserved.
+        © {new Date().getFullYear()} MNR‑PURE‑AI. All rights reserved.
       </footer>
     </div>
   );
