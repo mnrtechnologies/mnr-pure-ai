@@ -6,10 +6,11 @@ import {
   NavigationMenuItem,
   NavigationMenuTrigger,
   NavigationMenuContent,
-
 } from "../../../components/ui/navigationmenu";
 import {navLinks} from "../../../components/layout/NavComponents/navLinks"
 import {ListItem} from "../../../components/layout/NavComponents/ListItem"
+
+
 export function NavbarDesktopMenu() {
   return (
     <div className="hidden md:flex flex-1 justify-center border-slate-300">

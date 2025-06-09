@@ -1,13 +1,14 @@
 // components/Navbar.jsx
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import {useState} from "react"
 import { Button } from "../ui/button";
 import { NavbarLogo } from "./NavComponents/NavbarLogo";
 import { NavbarDesktopMenu } from "./NavComponents/NavbarDesktopMenu";
 import { NavbarMobileMenu } from "./NavComponents/NavbarMobileMenu";
 
 export function Navbar() {
-  const [openMobileMenus, setOpenMobileMenus] = React.useState({});
+  const [openMobileMenus, setOpenMobileMenus] = useState({});
   const navigate = useNavigate();
 
   const toggleMobileMenu = (label) => {

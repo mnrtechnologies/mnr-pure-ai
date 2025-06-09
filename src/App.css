@@ -35,3 +35,7 @@
     transform: rotate(360deg);
   }
 }
+#book-now-section {
+  scroll-margin-top: 96px; /* adjust to match your fixed navbar height */
+}
+

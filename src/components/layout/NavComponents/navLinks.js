@@ -18,13 +18,11 @@ export const navLinks = [
       {
         title: "PM-AI-Tool",
         href: "https://pm-ai-tool.vercel.app/dashboard/projects",
-        description: "Forecast project delays with high accuracy.",
         icon: ChartBarIcon,
       },
        {
         title: "Students-AI (In Progress)",
         href: "",
-        description: "Improve student understanding and retention.",
         icon: AcademicCapIcon,
       },
     ],

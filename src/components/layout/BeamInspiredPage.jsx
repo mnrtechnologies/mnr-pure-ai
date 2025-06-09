@@ -40,7 +40,7 @@ function FeatureCard({ icon, title, description }) {
 
 function CTA({ onBookNow, bookNowRef }) {
   return (
-    <section id="book-now-section" className="py-16 bg-slate-800/70 rounded-xl border border-blue-700/50 shadow-2xl backdrop-blur-md flex flex-col items-center gap-6">
+    <section id="book-now-section" className="py-16 pt-24 bg-slate-800/70 rounded-xl border border-blue-700/50 shadow-2xl backdrop-blur-md flex flex-col items-center gap-6">
       <h2 className="text-3xl font-bold">Ready to Dive In?</h2>
       <p className="text-gray-400 max-w-xl text-center px-4">
       <span className="text-slate-200">Connect with us today to get started and experience firsthand how we bring innovation to life."</span>
@@ -63,28 +63,24 @@ export default function BeamInspiredPage() {
   const bookNowButtonRef = useRef(null); 
 
   useEffect(() => {
-  
-    if (location.state && location.state.scrollToId) {
-      const targetId = location.state.scrollToId;
-      const targetElement = document.getElementById(targetId);
-
-      if (targetElement) {
-      
-        targetElement.scrollIntoView({ behavior: "smooth", block: "center" });
-
-      
-        if (bookNowButtonRef.current) {
-          bookNowButtonRef.current.classList.add("highlight-animation");
-          setTimeout(() => {
-            bookNowButtonRef.current.classList.remove("highlight-animation");
-          }, 1500); 
-        }
+  if (location.state?.scrollToId) {
+    const targetElement = document.getElementById(location.state.scrollToId);
+    if (targetElement) {
+       targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
+       
+      if (bookNowButtonRef.current) {
+        bookNowButtonRef.current.classList.add("highlight-animation");
+        setTimeout(() => {
+          bookNowButtonRef.current.classList.remove("highlight-animation");
+        }, 2500);
       }
-
-  
-      navigate(location.pathname, { replace: true, state: {} });
     }
-  }, [location, navigate]); 
+
+    // Clean up state
+    navigate(location.pathname, { replace: true, state: {} });
+  }
+}, [location, navigate]);
+
 
   return (
     <div className="relative min-h-screen flex flex-col bg-slate-900/50 text-gray-100 overflow-hidden">
