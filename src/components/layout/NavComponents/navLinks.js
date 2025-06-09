@@ -22,9 +22,9 @@ export const navLinks = [
         icon: ChartBarIcon,
       },
        {
-        title: "Students-AI",
+        title: "Students-AI (In Progress)",
         href: "",
-        description: "Forecast project delays with high accuracy.",
+        description: "Improve student understanding and retention.",
         icon: AcademicCapIcon,
       },
     ],
@@ -59,13 +59,13 @@ export const navLinks = [
     dropdownContent: [
       {
         title: "Product Demo Video",
-        href: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        href: "",
         description: "Watch a guided tour of our AI platform.",
         icon: PlayCircleIcon,
       },
       {
         title: "Live Project Showcase",
-        href: "/live-demo",
+        href: "https://pm-ai-tool.vercel.app/dashboard/projects",
         description: "Explore a live, interactive project powered by our AI.",
         icon: ComputerDesktopIcon,
       },

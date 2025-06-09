@@ -1,9 +1,18 @@
 .App {
   text-align: center;
+  background-color: #0f172a; /* light gray background (Tailwind gray-50) */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #111827; /* dark gray text (Tailwind gray-900) */
+  font-size: calc(10px + 2vmin);
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 30vmin;
+  width:40vmin;
   pointer-events: none;
 }
 
@@ -13,19 +22,9 @@
   }
 }
 
-.App-header {
-  background-color: #000000;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
 .App-link {
-  color: #61dafb;
+  color: #3b82f6; /* Tailwind blue-500 */
+  text-decoration: underline;
 }
 
 @keyframes App-logo-spin {
